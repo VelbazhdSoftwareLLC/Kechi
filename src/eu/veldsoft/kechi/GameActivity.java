@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import eu.veldsoft.kechi.model.Board;
 import eu.veldsoft.kechi.model.Cell;
 
-public class MainActivity extends Activity {
+public class GameActivity extends Activity {
 	/**
 	 * Image references.
 	 */
@@ -51,7 +51,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_game);
 
 		images[0][0] = (ImageView) findViewById(R.id.cell0000);
 		images[0][1] = (ImageView) findViewById(R.id.cell0001);
