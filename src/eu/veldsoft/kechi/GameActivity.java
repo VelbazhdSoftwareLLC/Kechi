@@ -2,11 +2,37 @@ package eu.veldsoft.kechi;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import eu.veldsoft.kechi.model.Board;
 import eu.veldsoft.kechi.model.Cell;
 
 public class GameActivity extends Activity {
+	/**
+	 * On image click listener object.
+	 */
+	private View.OnClickListener onClick = new View.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			int result = -1;
+			
+			loop: for (int i = 0; i < images.length; i++) {
+				for (int j = 0; j < images[i].length; j++) {
+					if (images[i][j] == v) {
+						result = board.click(i, j);
+						break loop;
+					}
+				}
+			}
+			
+			if(result == 0) {
+				board.next();
+			}
+
+			updateViews();
+		}
+	};
+
 	/**
 	 * Image references.
 	 */
@@ -21,9 +47,17 @@ public class GameActivity extends Activity {
 	 * Update all views according object model.
 	 */
 	private void updateViews() {
+		int selection[] = board.getSelection();
+
 		Cell cells[][] = board.getCells();
 		for (int i = 0; i < cells.length && i < images.length; i++) {
 			for (int j = 0; j < cells[i].length && j < images[i].length; j++) {
+				if (selection!=null && i == selection[0] && j == selection[1]) {
+					images[i][j].setAlpha(0.5F);
+				} else {
+					images[i][j].setAlpha(1.0F);
+				}
+
 				switch (cells[i][j]) {
 				case EMPTY:
 					images[i][j].setImageResource(R.drawable.empty);
@@ -234,7 +268,13 @@ public class GameActivity extends Activity {
 		images[12][10] = (ImageView) findViewById(R.id.cell1210);
 		images[12][11] = (ImageView) findViewById(R.id.cell1211);
 		images[12][12] = (ImageView) findViewById(R.id.cell1212);
-		
+
+		for (ImageView[] array : images) {
+			for (ImageView image : array) {
+				image.setOnClickListener(onClick);
+			}
+		}
+
 		updateViews();
 	}
 }
