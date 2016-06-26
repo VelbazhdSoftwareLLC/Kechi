@@ -83,7 +83,7 @@ public class Board {
 		/*
 		 * Length of the path is limited.
 		 */
-		if (length >= CELLS_MOVE) {
+		if (length > CELLS_MOVE) {
 			return;
 		}
 
@@ -143,6 +143,7 @@ public class Board {
 		step(x1, y1, 0, x2, y2, visited, solutions);
 
 		if (solutions.isEmpty() == true) {
+			// TODO throw new RuntimeException("Path not found.");
 			return Integer.MAX_VALUE;
 		}
 
@@ -212,6 +213,79 @@ public class Board {
 	}
 
 	/**
+	 * Check for available moves.
+	 * 
+	 * @param player
+	 *            Who is playing.
+	 * @param length
+	 *            Length of the path to be found.
+	 * 
+	 * @return True if move is possible, false otherwise.
+	 */
+	public boolean canMove() {
+		Cell player = Cell.getCellById(turn % NUMBER_OF_PLAYERS);
+		int length = cellsMoveLeft;
+
+		/*
+		 * Searching is done only for players.
+		 */
+		if (player.isPlayer() == false) {
+			return false;
+		}
+
+		/*
+		 * Search for at least one player's piece.
+		 */
+		boolean found = false;
+		loop: for (Cell array[] : cells) {
+			for (Cell cell : array) {
+				if (cell == player) {
+					found = true;
+					break loop;
+				}
+			}
+		}
+		if (found == false) {
+			return false;
+		}
+
+		/*
+		 * Search for all possible moves.
+		 */
+		for (int i = 0, d; i < cells.length; i++) {
+			for (int j = 0; j < cells[i].length; j++) {
+				if (cells[i][j] != player) {
+					continue;
+				}
+
+				// TODO Use helper function.
+				for (int m = i - length; m <= i + length; m++) {
+					if (m < 0 || cells.length <= m) {
+						continue;
+					}
+
+					for (int n = j - length; n <= j + length; n++) {
+						if (n < 0 || cells[m].length <= n) {
+							continue;
+						}
+
+						if (i == m && j == n) {
+							continue;
+						}
+
+						d = distance(i, j, m, n);
+						if (d != Integer.MAX_VALUE && d > 0) {
+							return true;
+						}
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Handle on click event in the object model.
 	 * 
 	 * @param x
@@ -250,6 +324,9 @@ public class Board {
 			return cellsMoveLeft;
 		}
 
+		/*
+		 * Valid move click. It is the end of the move.
+		 */
 		if (selection != null) {
 			int distance = distance(selection[0], selection[1], x, y);
 			if ((cells[x][y] == Cell.AVAILABLE || cells[x][y].isOpponent(cells[selection[0]][selection[1]]))

@@ -6,16 +6,41 @@ package eu.veldsoft.kechi.model;
  * @author Todor Balabanov
  */
 public enum Cell {
-	RED(0), BLUE(1), EMPTY(101), AVAILABLE(102), UNAVAILABLE(103);
+	RED(0, "Red Player"), BLUE(1, "Blue Player"), EMPTY(101, "Empty Cell"), AVAILABLE(102,
+			"Available Cell"), UNAVAILABLE(103, "Unavailable Cell");
 
 	private int id;
 
-	private Cell(int id) {
+	private String description;
+
+	static public Cell getCellById(int id) {
+		for(Cell cell : Cell.values()) {
+			if(id == cell.id) {
+				return cell;
+			}
+		}
+		
+		new RuntimeException( "Cell not found." );
+		return null;
+	}
+
+	private Cell(int id, String description) {
 		this.id = id;
+		this.description = description;
 	}
 
 	public int getId() {
 		return id;
+	}
+
+	public boolean isPlayer() {
+		switch (this) {
+		case RED:
+		case BLUE:
+			return true;
+		default:
+			return false;
+		}
 	}
 
 	public boolean isOpponent(Cell cell) {
@@ -30,5 +55,9 @@ public enum Cell {
 		}
 
 		return true;
+	}
+
+	public String describe() {
+		return description;
 	}
 }

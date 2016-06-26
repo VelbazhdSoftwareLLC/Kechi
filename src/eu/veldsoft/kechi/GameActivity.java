@@ -2,8 +2,10 @@ package eu.veldsoft.kechi;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 import eu.veldsoft.kechi.model.Board;
 import eu.veldsoft.kechi.model.Cell;
 
@@ -15,17 +17,23 @@ public class GameActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			int result = -1;
-			
+
 			loop: for (int i = 0; i < images.length; i++) {
 				for (int j = 0; j < images[i].length; j++) {
 					if (images[i][j] == v) {
+						if (board.canMove() == false) {
+							Toast.makeText(GameActivity.this, getResources().getString(R.string.no_moves_left),
+									Toast.LENGTH_LONG).show();
+							return;
+						}
+
 						result = board.click(i, j);
 						break loop;
 					}
 				}
 			}
-			
-			if(result == 0) {
+
+			if (result == 0) {
 				board.next();
 			}
 
@@ -52,7 +60,7 @@ public class GameActivity extends Activity {
 		Cell cells[][] = board.getCells();
 		for (int i = 0; i < cells.length && i < images.length; i++) {
 			for (int j = 0; j < cells[i].length && j < images[i].length; j++) {
-				if (selection!=null && i == selection[0] && j == selection[1]) {
+				if (selection != null && i == selection[0] && j == selection[1]) {
 					images[i][j].setAlpha(0.5F);
 				} else {
 					images[i][j].setAlpha(1.0F);
@@ -276,5 +284,27 @@ public class GameActivity extends Activity {
 		}
 
 		updateViews();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.new_game:
+			board.reset();
+			// sounds.play(finishId, 0.99f, 0.99f, 0, 0, 1);
+			updateViews();
+			break;
+		case R.id.help:
+			// startActivity(new Intent(GameActivity.this, HelpActivity.class));
+			break;
+		case R.id.about:
+			// startActivity(new Intent(GameActivity.this,
+			// AboutActivity.class));
+			break;
+		}
+		return true;
 	}
 }

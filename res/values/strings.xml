@@ -4,5 +4,9 @@
     <string name="hello_world"></string>
     <string name="app_name">Kechi</string>
     <string name="title_activity_main">Kechi</string>
-
+    <string name="no_moves_left">No moves left!</string>
+    <string name="new_game_menu">New Game</string>
+    <string name="help_menu">Help</string>
+    <string name="about_menu">About</string>
+    
 </resources>
