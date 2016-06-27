@@ -2,11 +2,17 @@
 <resources>
 
     <string name="hello_world"></string>
+    <string name="redirect_activity_is_missing_message">Redirect activity is missing!</string>
     <string name="app_name">Kechi</string>
     <string name="title_activity_main">Kechi</string>
     <string name="no_moves_left">No moves left!</string>
     <string name="new_game_menu">New Game</string>
     <string name="help_menu">Help</string>
     <string name="about_menu">About</string>
-    
+    <string name="title_activity_splash">Kechi</string>
+    <string name="title_activity_help">Help</string>
+    <string name="title_activity_about">About</string>
+    <string name="help_text">This game is played on the following board with the following setup:\n\nMOVE - On each turn, each player moves his stones a total of exactly six cells.\n\nThis means that if he has exactly one stone left, it must move exactly six cells (the stones are able to jump the intermediate cells).\n\nThe stone must finish its move on an available empty cell or a cell occupied by an enemy stone (which is captured and removed from the board).\n\nWhen a stone moves and leaves a cell, that cell cannot be used to finish any subsequent moves for either players (it should be marked somehow).\n\nGOAL - A player who is unable to make a valid move, looses.</string>
+    <string name="about_text">KECHI\n\nCopyright (c) 1999 Michael Marcus\n\nAndroid version was implemented as user interface tutorial at Soft Intellect academy in Java classes. \nSofia, Bulgaria, 2016\n\nCopyright (c) 2016 Velbazhd Software LLC</string>
+
 </resources>
