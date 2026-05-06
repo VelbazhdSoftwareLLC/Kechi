@@ -304,18 +304,15 @@ public class GameActivity extends Activity {
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.new_game:
+		int id = item.getItemId();
+		if (id == R.id.new_game) {
 			board.reset();
 			// sounds.play(finishId, 0.99f, 0.99f, 0, 0, 1);
 			updateViews();
-			break;
-		case R.id.help:
+		} else if (id == R.id.help) {
 			startActivity(new Intent(GameActivity.this, HelpActivity.class));
-			break;
-		case R.id.about:
+		} else if (id == R.id.about) {
 			startActivity(new Intent(GameActivity.this, AboutActivity.class));
-			break;
 		}
 		return true;
 	}

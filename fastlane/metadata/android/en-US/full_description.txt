@@ -1,0 +1,69 @@
+KECHI
+Copyright (c) 1999 Michael Marcus
+
+This game is played on the following board with the following setup:
+
+cell a13cell b13cell c13cell d13cell e13cell f13cell g13cell h13cell i13cell j13cell k13cell l13cell m13
+cell a12cell e12cell i12cell m12
+cell a11cell e11cell i11cell m11
+cell a10cell e10cell i10cell m10
+cell a9cell b9cell c9cell d9cell e9cell f9cell g9cell h9cell i9cell j9cell k9cell l9cell m9
+cell a8cell e8cell i8cell m8
+cell a7cell e7cell i7cell m7
+cell a6cell e6cell i6cell m6
+cell a5cell b5cell c5cell d5cell e5cell f5cell g5cell h5cell i5cell j5cell k5cell l5cell m5
+cell a4cell e4cell i4cell m4
+cell a3cell e3cell i3cell m3
+cell a2cell e2cell i2cell m2
+cell a1cell b1cell c1cell d1cell e1cell f1cell g1cell h1cell i1cell j1cell k1cell l1cell m1
+ 
+MOVE - On each turn, each player moves his stones a total of exactly six cells.
+This means that if he has exactly one stone left, it must move exactly six cells (the stones are able to jump the intermediate cells).
+The stone must finish its move on an available empty cell or a cell occupied by an enemy stone (which is captured and removed from the board).
+When a stone moves and leaves a cell, that cell cannot be used to finish any subsequent moves for either players (it should be marked somehow).
+GOAL - A player who is unable to make a valid move, loses.
+ 
+cell a13cell b13cell c13cell d13cell e13cell f13cell g13cell h13cell i13cell j13cell k13cell l13cell m13
+cell a12cell e12cell i12cell m12
+cell a11cell e11cell i11cell m11
+cell a10cell e10cell i10cell m10
+cell a9cell b9cell c9cell d9cell e9cell f9cell g9cell h9cell i9cell j9cell k9cell l9cell m9
+cell a8cell e8cell i8cell m8
+cell a7cell e7cell i7cell m7
+cell a6cell e6cell i6cell m6
+cell a5cell b5cell c5cell d5cell e5cell f5cell g5cell h5cell i5cell j5cell k5cell l5cell m5
+cell a4cell e4cell i4cell m4
+cell a3cell e3cell i3cell m3
+cell a2cell e2cell i2cell m2
+cell a1cell b1cell c1cell d1cell e1cell f1cell g1cell h1cell i1cell j1cell k1cell l1cell m1
+A move example
+This is a possible opening for White, one stone moved 5 cells, and the other moved one cell, for a total of 6. Both initial cells cannot be used to finish a move (but can be used to pass thru).
+
+cell a13cell b13cell c13cell d13cell e13cell f13cell g13cell h13cell i13cell j13cell k13cell l13cell m13
+cell a12cell e12cell i12cell m12
+cell a11cell e11cell i11cell m11
+cell a10cell e10cell i10cell m10
+cell a9cell b9cell c9cell d9cell e9cell f9cell g9cell h9cell i9cell j9cell k9cell l9cell m9
+cell a8cell e8cell i8cell m8
+cell a7cell e7cell i7cell m7
+cell a6cell e6cell i6cell m6
+cell a5cell b5cell c5cell d5cell e5cell f5cell g5cell h5cell i5cell j5cell k5cell l5cell m5
+cell a4cell e4cell i4cell m4
+cell a3cell e3cell i3cell m3
+cell a2cell e2cell i2cell m2
+cell a1cell b1cell c1cell d1cell e1cell f1cell g1cell h1cell i1cell j1cell k1cell l1cell m1
+Endgame
+White has exactly one stone left and so, must move exactly six cells. However, every cell exactly six cells away is blocked by a marker. Thus, White loses, and Black has won.
+
+Some comments from the author:
+
+Kechi is a game of pure strategy for two players. The game-board is a criss-cross of rows and columns of thirteen squares, and the game pieces consist of two sets of four pawns of different color (the example drawings included use "B" for black and "W" for white) and a set of eighty-eight markers of an off color (the example drawings represent those markers with an "X" across the squares they mark). Capture, as in chess, is by replacement. Victory is established, as in checkers, by being the last player capable of making a valid move. A unique factor of the game is that once a piece starts a move from a given space, that space cannot be occupied. [...]
+
+Play testing has shown that neither player holds an advantage, and movement later in the game becomes a challenge as spaces become exhausted by movement and by captures. Losing two pieces also severely restricts freedom of movement. Several variants have been suggested:
+
+Other board shapes might also be used to change the complexion of play. Larger boards, rather than smaller ones, are suggested, since smaller boards tend to more heavily favor one player or the other. It is quite possible to design smaller boards that force a win by either player.
+On a larger board, it becomes possible to add more pieces to each side.
+Rather than having a fixed movement limit of six squares, the movement limit might instead be determined by die roll.
+Rather than leaving the board empty and drawing an "X" on the used squares, the board could start covered with tokens; movement must be to a square with either a token or an opponent's piece. Doing so, an alternate victory condition becomes possible: The one who has the most tokens and opponents' pieces by the game end wins.
+
+To read more, check Marcus' Kechi webpage: https://jpneto.github.io/world_abstract_games/kechi.htm
